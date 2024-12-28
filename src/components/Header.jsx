@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <>
-      <div className="w-full bg-yellow-300 px-4 box-border py-1">
+      <div className="w-[98%] m-auto mt-3  bg-yellow-300 px-4 box-border py-3 rounded-2xl ">
         <ul className="flex justify-between font-bold">
           <li>Home</li>
           <li>About</li>

@@ -1,5 +1,6 @@
 import DropListBox from "./DropListBox";
 import "../App.css";
+import ChangeSegment from "./ChangeSegment";
 const DropList = () => {
   const dropLists = [
     {
@@ -35,11 +36,14 @@ const DropList = () => {
   ];
 
   return (
-    <div className="w-[98%] m-auto mt-[2%] grid grid-cols-5 grid-rows-3 justify-center items-center">
-      {dropLists.map((item, index) => (
-        <DropListBox key={index} itemData={item} itemIndex={index} />
-      ))}
-    </div>
+    <>
+      <ChangeSegment />
+      <div className="w-[98%] m-auto mt-[2%] grid grid-cols-5 grid-rows-3 justify-center items-center">
+        {dropLists.map((item, index) => (
+          <DropListBox key={index} itemData={item} itemIndex={index} />
+        ))}
+      </div>
+    </>
   );
 };
 

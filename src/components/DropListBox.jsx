@@ -18,7 +18,11 @@ const DropListBox = ({ itemData, itemIndex }) => {
         </div>
 
         <div className="font-bold bg-green-300 w-[5rem] text-center rounded-2xl cursor-pointer">
-          <a href={itemData.postUrl} target="_blank" rel="noopener noreferrer">
+          <a
+            href={itemData.projectLink}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Open
           </a>
         </div>

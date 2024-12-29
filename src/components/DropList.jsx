@@ -1,7 +1,22 @@
+import React, { useState, useEffect } from "react";
 import DropListBox from "./DropListBox";
 import "../App.css";
 import ChangeSegment from "./ChangeSegment";
+import DropListGalxe from "./DropListGalxe";
+import DropListTodo from "./DropListTodo";
+import DropListWaitlist from "./DropListWaitlist";
+
 const DropList = () => {
+  const [segments, setSegments] = useState(0);
+
+  const changeSegments = (value) => {
+    setSegments(value);
+  };
+
+  useEffect(() => {
+    console.log("Selected segment:", segments);
+  }, [segments]);
+
   const dropLists = [
     {
       projectName: "Genesis",
@@ -35,13 +50,53 @@ const DropList = () => {
     },
   ];
 
+  const drogalxelist = [
+    {
+      projectName: "Genesis",
+      postUrl: "https://genesis.chainbase.com/",
+      postImage:
+        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgn5jMqbbIM4Z2WSqLDwvUtaJ1zNmLG1d6vOUt5fp6MZXHpWs59Ee-SOzVhDBDbIPEd6CtmYF7JgAIQMHSxWrcrPDgjZn-f_l45L_-7M0R51sukAtZSmV7vF7KpcsPkzj7RE4Jo0ZY5TC3upHn-CKw48mzi_9PIK-eIlAgC042przH_tSETg16pEUUsx_I/s1600/download%20(4).png",
+    },
+  ];
+
+  const dropwaitlist = [
+    {
+      projectName: "Genesis",
+      postUrl: "https://genesis.chainbase.com/",
+      postImage:
+        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgn5jMqbbIM4Z2WSqLDwvUtaJ1zNmLG1d6vOUt5fp6MZXHpWs59Ee-SOzVhDBDbIPEd6CtmYF7JgAIQMHSxWrcrPDgjZn-f_l45L_-7M0R51sukAtZSmV7vF7KpcsPkzj7RE4Jo0ZY5TC3upHn-CKw48mzi_9PIK-eIlAgC042przH_tSETg16pEUUsx_I/s1600/download%20(4).png",
+    },
+  ];
+
+  const droptodolist = [
+    {
+      projectName: "Genesis",
+      postUrl: "https://genesis.chainbase.com/",
+      postImage:
+        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgn5jMqbbIM4Z2WSqLDwvUtaJ1zNmLG1d6vOUt5fp6MZXHpWs59Ee-SOzVhDBDbIPEd6CtmYF7JgAIQMHSxWrcrPDgjZn-f_l45L_-7M0R51sukAtZSmV7vF7KpcsPkzj7RE4Jo0ZY5TC3upHn-CKw48mzi_9PIK-eIlAgC042przH_tSETg16pEUUsx_I/s1600/download%20(4).png",
+    },
+  ];
   return (
     <>
-      <ChangeSegment />
+      <ChangeSegment changeSeg={changeSegments} />
       <div className="w-[98%] m-auto mt-[2%] grid grid-cols-5 grid-rows-3 justify-center items-center">
-        {dropLists.map((item, index) => (
-          <DropListBox key={index} itemData={item} itemIndex={index} />
-        ))}
+        {segments === 0
+          ? dropLists.map((item, index) => (
+              <DropListBox key={index} itemData={item} itemIndex={index} />
+            ))
+          : segments === 1
+          ? drogalxelist.map((item, index) => (
+              <DropListGalxe key={index} itemData={item} itemIndex={index} />
+            ))
+          : segments === 3
+          ? dropwaitlist.map((item, index) => (
+              <DropListWaitlist key={index} itemData={item} itemIndex={index} />
+            ))
+          : segments === 2
+          ? droptodolist.map((item, index) => (
+              <DropListTodo key={index} itemData={item} itemIndex={index} />
+            ))
+          : null}
       </div>
     </>
   );

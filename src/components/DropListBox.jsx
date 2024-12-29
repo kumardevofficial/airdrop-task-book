@@ -7,7 +7,7 @@ const DropListBox = ({ itemData, itemIndex }) => {
         </div>
         <div>
           <img
-            src={itemData.postImage}
+            src={itemData.logoUrl}
             alt={itemData.projectName}
             className="w-10 h-10"
           />

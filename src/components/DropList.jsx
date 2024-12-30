@@ -10,6 +10,8 @@ import axios from "axios";
 const DropList = () => {
   const [segments, setSegments] = useState(0);
   const [airdropList, setAirdropList] = useState([]);
+  const [galxeAirdropList, setGalxeAirdropList] = useState([]);
+  const [waitlistAirdropList, setWaitlistAirdropList] = useState([]);
 
   const changeSegments = (value) => {
     setSegments(value);
@@ -32,6 +34,40 @@ const DropList = () => {
 
   useEffect(() => {
     getData();
+  }, []);
+
+  const getGalxeData = async () => {
+    await axios
+      .get(
+        "https://airdroptaskbook-server.vercel.app/galxeairdrop/showgalxeairdrop"
+      )
+      .then((response) => {
+        setGalxeAirdropList(response.data);
+      })
+      .catch((err) => {
+        console.log(`there is some error${err}`);
+      });
+  };
+
+  useEffect(() => {
+    getGalxeData();
+  }, []);
+
+  const getWaitlistData = async () => {
+    await axios
+      .get(
+        "https://airdroptaskbook-server.vercel.app/waitlistairdrop/showwaitlistairdrop"
+      )
+      .then((response) => {
+        setWaitlistAirdropList(response.data);
+      })
+      .catch((err) => {
+        console.log(`there is some error${err}`);
+      });
+  };
+
+  useEffect(() => {
+    getWaitlistData();
   }, []);
 
   // const dropLists = [
@@ -67,23 +103,23 @@ const DropList = () => {
   //   },
   // ];
 
-  const drogalxelist = [
-    {
-      projectName: "Genesis",
-      postUrl: "https://genesis.chainbase.com/",
-      postImage:
-        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgn5jMqbbIM4Z2WSqLDwvUtaJ1zNmLG1d6vOUt5fp6MZXHpWs59Ee-SOzVhDBDbIPEd6CtmYF7JgAIQMHSxWrcrPDgjZn-f_l45L_-7M0R51sukAtZSmV7vF7KpcsPkzj7RE4Jo0ZY5TC3upHn-CKw48mzi_9PIK-eIlAgC042przH_tSETg16pEUUsx_I/s1600/download%20(4).png",
-    },
-  ];
+  // const drogalxelist = [
+  //   {
+  //     projectName: "Genesis",
+  //     postUrl: "https://genesis.chainbase.com/",
+  //     postImage:
+  //       "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgn5jMqbbIM4Z2WSqLDwvUtaJ1zNmLG1d6vOUt5fp6MZXHpWs59Ee-SOzVhDBDbIPEd6CtmYF7JgAIQMHSxWrcrPDgjZn-f_l45L_-7M0R51sukAtZSmV7vF7KpcsPkzj7RE4Jo0ZY5TC3upHn-CKw48mzi_9PIK-eIlAgC042przH_tSETg16pEUUsx_I/s1600/download%20(4).png",
+  //   },
+  // ];
 
-  const dropwaitlist = [
-    {
-      projectName: "Genesis",
-      postUrl: "https://genesis.chainbase.com/",
-      postImage:
-        "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgn5jMqbbIM4Z2WSqLDwvUtaJ1zNmLG1d6vOUt5fp6MZXHpWs59Ee-SOzVhDBDbIPEd6CtmYF7JgAIQMHSxWrcrPDgjZn-f_l45L_-7M0R51sukAtZSmV7vF7KpcsPkzj7RE4Jo0ZY5TC3upHn-CKw48mzi_9PIK-eIlAgC042przH_tSETg16pEUUsx_I/s1600/download%20(4).png",
-    },
-  ];
+  // const dropwaitlist = [
+  //   {
+  //     projectName: "Genesis",
+  //     postUrl: "https://genesis.chainbase.com/",
+  //     postImage:
+  //       "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgn5jMqbbIM4Z2WSqLDwvUtaJ1zNmLG1d6vOUt5fp6MZXHpWs59Ee-SOzVhDBDbIPEd6CtmYF7JgAIQMHSxWrcrPDgjZn-f_l45L_-7M0R51sukAtZSmV7vF7KpcsPkzj7RE4Jo0ZY5TC3upHn-CKw48mzi_9PIK-eIlAgC042przH_tSETg16pEUUsx_I/s1600/download%20(4).png",
+  //   },
+  // ];
 
   const droptodolist = [
     {
@@ -102,14 +138,14 @@ const DropList = () => {
               <DropListBox key={index} itemData={item} itemIndex={index} />
             ))
           : segments === 1
-          ? drogalxelist.map((item, index) => (
+          ? galxeAirdropList.map((item, index) => (
               <DropListGalxe key={index} itemData={item} itemIndex={index} />
             ))
-          : segments === 3
-          ? dropwaitlist.map((item, index) => (
+          : segments === 2
+          ? waitlistAirdropList.map((item, index) => (
               <DropListWaitlist key={index} itemData={item} itemIndex={index} />
             ))
-          : segments === 2
+          : segments === 3
           ? droptodolist.map((item, index) => (
               <DropListTodo key={index} itemData={item} itemIndex={index} />
             ))

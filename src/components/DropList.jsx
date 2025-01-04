@@ -6,12 +6,17 @@ import DropListGalxe from "./DropListGalxe";
 import DropListTodo from "./DropListTodo";
 import DropListWaitlist from "./DropListWaitlist";
 import axios from "axios";
+import PopUpBox from "./Popup";
 
 const DropList = () => {
   const [segments, setSegments] = useState(0);
   const [airdropList, setAirdropList] = useState([]);
   const [galxeAirdropList, setGalxeAirdropList] = useState([]);
   const [waitlistAirdropList, setWaitlistAirdropList] = useState([]);
+  const [showPopup, setShowPopup] = useState({
+    thepopupu: false,
+    discription: "",
+  });
 
   const changeSegments = (value) => {
     setSegments(value);
@@ -134,9 +139,15 @@ const DropList = () => {
       <ChangeSegment changeSeg={changeSegments} />
 
       {segments === 0 ? (
-        <div className="w-[98%] m-auto mt-[2%] grid grid-cols-5 grid-rows-3 justify-center items-center gap-y-7">
+        <div className="w-[98%] m-auto mt-[2%] grid-cols-1 grid md:grid-cols-4 grid-rows-3 place-items-center items-start gap-y-7 gap-x-3">
           {airdropList.map((item, index) => (
-            <DropListBox key={index} itemData={item} itemIndex={index} />
+            <DropListBox
+              index={index}
+              itemData={item}
+              popUpDisplay={showPopup.thepopupu}
+              popUpDis={showPopup.discription}
+              setShowPopup={setShowPopup}
+            />
           ))}
         </div>
       ) : segments === 1 ? (
@@ -157,6 +168,8 @@ const DropList = () => {
           <DropListTodo key={index} itemData={item} itemIndex={index} />
         ))
       ) : null}
+
+      <PopUpBox itemData={showPopup} setShowPopup={setShowPopup} />
     </>
   );
 };

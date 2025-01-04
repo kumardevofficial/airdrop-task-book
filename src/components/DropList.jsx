@@ -132,25 +132,31 @@ const DropList = () => {
   return (
     <>
       <ChangeSegment changeSeg={changeSegments} />
-      <div className="w-[98%] m-auto mt-[2%] grid grid-cols-5 grid-rows-3 justify-center items-center">
-        {segments === 0
-          ? airdropList.map((item, index) => (
-              <DropListBox key={index} itemData={item} itemIndex={index} />
-            ))
-          : segments === 1
-          ? galxeAirdropList.map((item, index) => (
-              <DropListGalxe key={index} itemData={item} itemIndex={index} />
-            ))
-          : segments === 2
-          ? waitlistAirdropList.map((item, index) => (
-              <DropListWaitlist key={index} itemData={item} itemIndex={index} />
-            ))
-          : segments === 3
-          ? droptodolist.map((item, index) => (
-              <DropListTodo key={index} itemData={item} itemIndex={index} />
-            ))
-          : null}
-      </div>
+
+      {segments === 0 ? (
+        <div className="w-[98%] m-auto mt-[2%] grid grid-cols-5 grid-rows-3 justify-center items-center gap-y-7">
+          {airdropList.map((item, index) => (
+            <DropListBox key={index} itemData={item} itemIndex={index} />
+          ))}
+        </div>
+      ) : segments === 1 ? (
+        <div className="w-[98%] m-auto mt-[2%] grid grid-cols-5 grid-rows-3 justify-center items-center">
+          {galxeAirdropList.map((item, index) => (
+            <DropListGalxe key={index} itemData={item} itemIndex={index} />
+          ))}
+        </div>
+      ) : segments === 2 ? (
+        <div className="w-[98%] m-auto mt-[2%] grid grid-cols-5 grid-rows-3 justify-center items-center">
+          {" "}
+          {waitlistAirdropList.map((item, index) => (
+            <DropListWaitlist key={index} itemData={item} itemIndex={index} />
+          ))}
+        </div>
+      ) : segments === 3 ? (
+        droptodolist.map((item, index) => (
+          <DropListTodo key={index} itemData={item} itemIndex={index} />
+        ))
+      ) : null}
     </>
   );
 };

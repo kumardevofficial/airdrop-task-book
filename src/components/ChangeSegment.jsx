@@ -6,6 +6,7 @@ const ChangeSegment = ({ changeSeg }) => {
   return (
     <div className="w-[80%] m-auto bg-gray-400 flex list-none justify-between box-border px-10 py-3 mt-5 rounded-2xl font-bold">
       <li
+        className="cursor-pointer"
         onClick={() => {
           changeSegment(0);
         }}
@@ -13,6 +14,7 @@ const ChangeSegment = ({ changeSeg }) => {
         Airdrop
       </li>
       <li
+        className="cursor-pointer"
         onClick={() => {
           changeSegment(1);
         }}
@@ -20,6 +22,7 @@ const ChangeSegment = ({ changeSeg }) => {
         Galxe
       </li>
       <li
+        className="cursor-pointer"
         onClick={() => {
           changeSegment(2);
         }}
@@ -27,6 +30,7 @@ const ChangeSegment = ({ changeSeg }) => {
         Waitlist
       </li>
       <li
+        className="cursor-pointer"
         onClick={() => {
           changeSegment(3);
         }}

@@ -14,10 +14,11 @@ const DropListBox = ({
 }) => {
   const [expand, setExpand] = useState(false);
 
-  const showDiscripton = (value) => {
+  const showDiscripton = (value, tlink) => {
     setShowPopup({
       thepopupu: true,
       discription: value,
+      popUpTaskLink: tlink,
     });
   };
 
@@ -147,17 +148,18 @@ const DropListBox = ({
                       key={index}
                       className="shadow-md shadow-black bg-gray-200 p-2 rounded-xl cursor-pointer"
                       onClick={() => {
-                        showDiscripton(task.dis);
+                        showDiscripton(task.taskDescription, task.taskLink);
                       }}
                       title={task.taskDescription}
                     >
-                      <a
+                      {task.taskName}
+                      {/* <a
                         href={task.taskLink}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        {task.taskName}
-                      </a>
+                        
+                      </a> */}
                     </div>
                   </>
                 );

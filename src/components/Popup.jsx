@@ -3,6 +3,7 @@ const PopUpBox = ({ itemData, setShowPopup }) => {
     setShowPopup({
       [itemData.thepopupu]: false,
       [itemData.discription]: "",
+      [itemData.popUpTaskLink]: "",
     });
     console.log(itemData);
   };
@@ -25,7 +26,7 @@ const PopUpBox = ({ itemData, setShowPopup }) => {
             <p className="mt-2  font-bold">{itemData.discription}</p>
             <div className="flex gap-x-6">
               <button
-                onClick={() => showDiscripton("")}
+                onClick={() => showDiscripton()}
                 className="mt-4 bg-gray-600 text-white py-1 px-4 rounded-lg"
               >
                 Close
@@ -34,7 +35,9 @@ const PopUpBox = ({ itemData, setShowPopup }) => {
                 // onClick={showDiscripton}
                 className="mt-4 bg-gray-200 font-bold text-black py-1 px-4 rounded-lg"
               >
-                Open Task
+                <a href={itemData.popUpTaskLink} target="_blank">
+                  Open Task
+                </a>
               </button>
             </div>
           </div>

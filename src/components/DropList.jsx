@@ -16,6 +16,7 @@ const DropList = () => {
   const [showPopup, setShowPopup] = useState({
     thepopupu: false,
     discription: "",
+    popUpTaskLink: "",
   });
 
   const changeSegments = (value) => {

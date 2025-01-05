@@ -22,13 +22,13 @@ const DropList = () => {
     setSegments(value);
   };
 
-  useEffect(() => {
-    console.log("Updated airdropList:", airdropList);
-  }, [airdropList]);
+  // useEffect(() => {
+  //   console.log("Updated airdropList:", airdropList);
+  // }, [airdropList]);
 
   const getData = async () => {
     await axios
-      .get("https://airdroptaskbook-server.vercel.app/airdrop/showairdrop")
+      .get("https://airdroptaskbook-server.vercel.app/project/all-project")
       .then((response) => {
         setAirdropList(response.data);
       })
@@ -43,9 +43,7 @@ const DropList = () => {
 
   const getGalxeData = async () => {
     await axios
-      .get(
-        "https://airdroptaskbook-server.vercel.app/galxeairdrop/showgalxeairdrop"
-      )
+      .get("https://airdroptaskbook-server.vercel.app/project/all-project")
       .then((response) => {
         setGalxeAirdropList(response.data);
       })
@@ -134,6 +132,8 @@ const DropList = () => {
         "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgn5jMqbbIM4Z2WSqLDwvUtaJ1zNmLG1d6vOUt5fp6MZXHpWs59Ee-SOzVhDBDbIPEd6CtmYF7JgAIQMHSxWrcrPDgjZn-f_l45L_-7M0R51sukAtZSmV7vF7KpcsPkzj7RE4Jo0ZY5TC3upHn-CKw48mzi_9PIK-eIlAgC042przH_tSETg16pEUUsx_I/s1600/download%20(4).png",
     },
   ];
+
+  // console.log(airdropList.tasks);
   return (
     <>
       <ChangeSegment changeSeg={changeSegments} />
@@ -144,6 +144,7 @@ const DropList = () => {
             <DropListBox
               index={index}
               itemData={item}
+              taskArray={item.tasks}
               popUpDisplay={showPopup.thepopupu}
               popUpDis={showPopup.discription}
               setShowPopup={setShowPopup}

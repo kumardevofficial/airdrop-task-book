@@ -10,6 +10,7 @@ const DropListBox = ({
   popUpDisplay,
   popUpDis,
   setShowPopup,
+  taskArray,
 }) => {
   const [expand, setExpand] = useState(false);
 
@@ -76,7 +77,9 @@ const DropListBox = ({
         {/* Project Logo */}
         <div>
           <img
-            src={itemData.logoUrl}
+            src={`https://airdroptaskbook-server.vercel.app/uploads/${itemData.projectImage.slice(
+              8
+            )}`}
             alt={itemData.projectName}
             className="w-10 h-10"
           />
@@ -85,7 +88,7 @@ const DropListBox = ({
         {/* Icons */}
         <div className="w-[95%] h-6 flex justify-center gap-x-4 text-2xl ">
           <a
-            href={itemData.projectLink}
+            href={itemData.link}
             target="_blank"
             rel="noopener noreferrer"
             className="cursor-pointer"
@@ -93,7 +96,7 @@ const DropListBox = ({
             <FaXTwitter />
           </a>
           <a
-            href={itemData.projectLink}
+            href={itemData.discordLink}
             target="_blank"
             rel="noopener noreferrer"
             className="cursor-pointer"
@@ -101,7 +104,7 @@ const DropListBox = ({
             <FaDiscord />
           </a>
           <a
-            href={itemData.projectLink}
+            href={itemData.telegramLink}
             target="_blank"
             rel="noopener noreferrer"
             className="cursor-pointer"
@@ -137,7 +140,7 @@ const DropListBox = ({
           {/* Expanded Content */}
           {expand && (
             <div className="mt-2 flex flex-wrap gap-x-2 gap-3 text-sm ">
-              {TaskArray.map((task, index) => {
+              {taskArray.map((task, index) => {
                 return (
                   <>
                     <div
@@ -146,16 +149,15 @@ const DropListBox = ({
                       onClick={() => {
                         showDiscripton(task.dis);
                       }}
-                      title={task.dis}
+                      title={task.taskDescription}
                     >
-                      {task.TaskName}
-                      {/* <a
-                        href={task.TaskLink}
+                      <a
+                        href={task.taskLink}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        
-                      </a> */}
+                        {task.taskName}
+                      </a>
                     </div>
                   </>
                 );

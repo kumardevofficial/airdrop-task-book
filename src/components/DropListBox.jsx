@@ -3,6 +3,8 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaDiscord } from "react-icons/fa";
 import { FaTelegramPlane } from "react-icons/fa";
 import { IoEarthOutline } from "react-icons/io5";
+import { MdOutlineReportProblem } from "react-icons/md";
+import { CiFlag1 } from "react-icons/ci";
 
 const DropListBox = ({
   index,
@@ -11,8 +13,10 @@ const DropListBox = ({
   popUpDis,
   setShowPopup,
   taskArray,
+  reportPopup,
 }) => {
   const [expand, setExpand] = useState(false);
+  const { isOpen, setIsOpen } = reportPopup;
 
   const showDiscripton = (value, tlink) => {
     setShowPopup({
@@ -30,12 +34,21 @@ const DropListBox = ({
     <>
       <div
         key={index}
-        className=" rounded-2xl  w-[16rem] flex flex-col items-center gap-y-3 bg-gray-300 py-3 shadow-lg shadow-black heading-text-shadow"
+        className="relative rounded-2xl  w-[16rem] flex flex-col items-center gap-y-3 bg-gray-300 py-3 shadow-lg shadow-black heading-text-shadow"
       >
+        {/* <div className="w-10 h-10 bg-red-500 rounded-full absolute top-[-10px] right-[-10px] flex justify-center items-center text-white">
+          X
+        </div> */}
         {/* Project Name */}
         <div className="font-bold text-2xl text-center">
           {itemData.projectName}
         </div>
+        <CiFlag1
+          className="cursor-pointer hover:text-red-500 hover:scale-125 absolute top-[10px] right-[10px]"
+          onClick={() => {
+            setIsOpen(true);
+          }}
+        />
 
         {/* Project Logo */}
         <div>
@@ -54,7 +67,7 @@ const DropListBox = ({
             rel="noopener noreferrer"
             className="cursor-pointer"
           >
-            <FaXTwitter />
+            <FaXTwitter className="hover:scale-110" />
           </a>
           <a
             href={itemData.discordLink}
@@ -62,7 +75,7 @@ const DropListBox = ({
             rel="noopener noreferrer"
             className="cursor-pointer"
           >
-            <FaDiscord />
+            <FaDiscord className="hover:scale-110" />
           </a>
           <a
             href={itemData.telegramLink}
@@ -70,7 +83,7 @@ const DropListBox = ({
             rel="noopener noreferrer"
             className="cursor-pointer"
           >
-            <FaTelegramPlane />
+            <FaTelegramPlane className="hover:scale-110" />
           </a>
           <a
             href={itemData.projectLink}
@@ -78,7 +91,7 @@ const DropListBox = ({
             rel="noopener noreferrer"
             className="cursor-pointer"
           >
-            <IoEarthOutline />
+            <IoEarthOutline className="hover:scale-110" />
           </a>
         </div>
 

@@ -7,12 +7,14 @@ import DropListTodo from "./DropListTodo";
 import DropListWaitlist from "./DropListWaitlist";
 import axios from "axios";
 import PopUpBox from "./Popup";
+import ReportPopup from "./ReportPupup";
 
 const DropList = () => {
   const [segments, setSegments] = useState(0);
   const [airdropList, setAirdropList] = useState([]);
   const [galxeAirdropList, setGalxeAirdropList] = useState([]);
   const [waitlistAirdropList, setWaitlistAirdropList] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
   const [showPopup, setShowPopup] = useState({
     thepopupu: false,
     discription: "",
@@ -149,6 +151,7 @@ const DropList = () => {
               popUpDisplay={showPopup.thepopupu}
               popUpDis={showPopup.discription}
               setShowPopup={setShowPopup}
+              reportPopup={{ isOpen, setIsOpen }}
             />
           ))}
         </div>
@@ -172,6 +175,7 @@ const DropList = () => {
       ) : null}
 
       <PopUpBox itemData={showPopup} setShowPopup={setShowPopup} />
+      <ReportPopup reportPopup={{ isOpen, setIsOpen }} />
     </>
   );
 };

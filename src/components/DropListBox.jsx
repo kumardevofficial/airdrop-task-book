@@ -49,7 +49,7 @@ const DropListBox = ({
         {/* Icons */}
         <div className="w-[95%] h-6 flex justify-center gap-x-4 text-2xl ">
           <a
-            href={itemData.link}
+            href={itemData.xlink}
             target="_blank"
             rel="noopener noreferrer"
             className="cursor-pointer"

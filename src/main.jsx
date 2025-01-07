@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import DropList from "./components/DropList.jsx";
-import DropListGalxe from "./components/DropListGalxe.jsx";
 import HomePage from "./components/HomePage.jsx";
 import Faucet from "./components/Faucet/Faucet.jsx";
 import Chain from "./components/Chain/Chain.jsx";

@@ -26,44 +26,6 @@ const DropListBox = ({
     setExpand((prev) => !prev);
   };
 
-  const TaskArray = [
-    {
-      TaskName: "NFT MINT",
-      TaskLink: "#",
-      dis: "in this task you need to mind the nft ",
-    },
-    {
-      TaskName: "Token Swap",
-      TaskLink: "#",
-      dis: " in this task you need to swap token",
-    },
-    {
-      TaskName: "Stake Liquidity",
-      TaskLink: "#",
-      dis: "in this task you need to stak some liquidity",
-    },
-    {
-      TaskName: "provide Liquidity",
-      TaskLink: "#",
-      dis: "in this task you need to provide the liquidity",
-    },
-    {
-      TaskName: "Galxe Task",
-      TaskLink: "#",
-      dis: " in this taks you need to complete the galxe task",
-    },
-    {
-      TaskName: "Bridge",
-      TaskLink: "#",
-      dis: " in this task you need to do some token of bridge",
-    },
-    {
-      TaskName: "Mint Golden Nft",
-      TaskLink: "#",
-      dis: " in this task you need to mint the golder nft",
-    },
-  ];
-
   return (
     <>
       <div
@@ -78,9 +40,7 @@ const DropListBox = ({
         {/* Project Logo */}
         <div>
           <img
-            src={`https://airdroptaskbook-server.vercel.app/uploads/${itemData.projectImage.slice(
-              8
-            )}`}
+            src={itemData.projectImage}
             alt={itemData.projectName}
             className="w-10 h-10"
           />

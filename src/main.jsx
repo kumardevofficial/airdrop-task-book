@@ -10,6 +10,11 @@ import Chain from "./components/Chain/Chain.jsx";
 import News from "./components/News/News.jsx";
 import Market from "./components/Market/Market.jsx";
 import CommunityPost from "./components/CommunityPost/CommunityPost.jsx";
+import Signup from "./components/loginAndSignup/Signup.jsx";
+import { IoLogIn } from "react-icons/io5";
+import Userlogin from "./components/loginAndSignup/Login.jsx";
+import TopGainers from "./components/MarketTrendingHeader/TopGainers.jsx";
+import MarketTrend from "./components/MarketTrendingHeader/MarketTrend.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +23,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePage />,
+        element: <MarketTrend />,
       },
       {
         path: "/airdrop",
@@ -43,6 +48,14 @@ const router = createBrowserRouter([
       {
         path: "/communitypost",
         element: <CommunityPost />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
+      },
+      {
+        path: "/login",
+        element: <Userlogin />,
       },
     ],
   },

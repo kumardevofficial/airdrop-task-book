@@ -2,7 +2,7 @@ import React from "react";
 
 const CoinSearchBar = () => {
   return (
-    <div className="flex items-center  p-2 rounded-lg shadow-sm shadow-gray-400  w-[93%] mx-auto mt-5 border-2 border-gray-300">
+    <div className="flex items-center  p-2 rounded-lg shadow-sm shadow-gray-400  w-[93%] mx-auto mt-5 border-2 border-gray-300 overflow-x-hidden ">
       {/* Search Input */}
       <div className="flex items-center border border-gray-300 rounded-lg px-3 py-1 w-full max-w-sm">
         <svg
